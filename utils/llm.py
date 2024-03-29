@@ -11,6 +11,8 @@ import torch
 class OpenAILLM:
     def __init__(self):
         self.model = "gpt-3.5-turbo-16k"
+        openai.base_url="https://sepstock.zeabur.app/v1/"
+        openai.api_key="sk-123456"
 
     @retry(wait=wait_random_exponential(min=1, max=60), stop=stop_after_attempt(6))
     def __call__(self, prompt):
